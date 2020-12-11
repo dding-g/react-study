@@ -12,10 +12,22 @@
 
 - creat react app을 사용해서 앱을 구성하면 따로 해줘야할 패키징은 없다. test를 작성할때 필요한 위의 패키지를 그대로 설치한다.
 
+```
+expect(screen.getByDisplayValue('test')).toHaveAttribute('id', 'the-id');
+expect(screen.getByDisplayValue('test').id).toBe('the-id');
+
+expect(screen.getByRole('input', { name: 'the-inputs-id' })).toHaveValue('test');
+expect(screen.getByRole('input', { name: 'the-inputs-id' }).value).toBe('test');
+```
+- 다양한 방법으로 테스트 가능.
+- aria-label 이라는 HTML속성을 사용해서 input에 label을 붙여서 test 할 때 식별자로 사용 가능.(공식 문서에서 나와있는 방법)
+
 
 ## 진행상황
 
 - [12.10] : checkbox TDD 시도중. getByText 로 checkbox 를 찾을 수 없음. checkbox.group 때문인듯. 수정 필요.
+- [12.11] : checkbox.group 문제가 아니였음. input은 당연히 text값이 없기 때문에 element자체를 찾을 수 없는 것 이였다. 공식문서에서 사용하는 방법인 aria-label을 이용해서 테스트를 진행해보았다.
 
 ## 참고 링크
 - [React Testing Library로 TDD개발환경 구축하기](https://benjaminwoojang.medium.com/react-testing-library%EB%A1%9C-tdd%EA%B0%9C%EB%B0%9C%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0-26e55fe33e01)
+- [React Test Library - Input event](https://testing-library.com/docs/example-input-event/)

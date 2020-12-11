@@ -16,7 +16,7 @@ class UnControlledCheckBox extends React.Component {
         return (
             <Checkbox.Group onChange={onChangeCheckbox}>
                 {list.map((v) => (
-                    <Checkbox key={v.value} value={v.value} />
+                    <Checkbox aria-label={v.value} key={v.value} value={v.value} />
                 ))}
             </Checkbox.Group>
         );
